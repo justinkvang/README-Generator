@@ -1,37 +1,24 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
-function renderLicenseBadge(license) {}
-
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
-function renderLicenseLink(license) {}
-
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
-function renderLicenseSection(license) {}
-
-// TODO: Create a function to generate markdown for README
 function generateMarkdown(userResponses, userInfo) {
 
   // Generate Table of Contents conditionally based on userResponses
-  let makeTOC = `## Table of Contents`;
+  let draftToC = `## Table of Contents`;
 
-  if (userResponses.installation !== '') { makeTOC += `
+  if (userResponses.installation !== '') { draftToC += `
   * [Installation](#installation)` };
 
-  if (userResponses.usage !== '') { makeTOC += `
+  if (userResponses.usage !== '') { draftToC += `
   * [Usage](#usage)` };
 
-  if (userResponses.contributing !== '') { makeTOC += `
+  if (userResponses.contributing !== '') { draftToC += `
   * [Contributing](#contributing)` };
 
-  if (userResponses.tests !== '') { makeTOC += `
+  if (userResponses.tests !== '') { draftToC += `
   * [Tests](#tests)` };
 
 
   // Generate markdown for the top required portions of the README
-  let makeMarkdown = 
-  `# ${userResponses.title}
+  let draftMarkdown = 
+  `# ${userResponses.title}  
   
   ## Description 
   
@@ -41,17 +28,17 @@ function generateMarkdown(userResponses, userInfo) {
   `
 
   // Add Table of Contents to markdown
-  makeMarkdown += makeTOC;
+  draftMarkdown += draftToC;
  
   // Add License section since License is required to Table of Contents
-  makeMarkdown += `
+  draftMarkdown += `
   * [License](#license)`;
   
 
   // Optional Installation section
   if (userResponses.installation !== '') {
   
-  makeMarkdown +=
+  draftMarkdown +=
   `
   
   ## Installation
@@ -65,7 +52,7 @@ function generateMarkdown(userResponses, userInfo) {
   // Optional Usage section
   if (userResponses.usage !== '') {
   
-  makeMarkdown +=
+  draftMarkdown +=
   
   `
   
@@ -92,7 +79,7 @@ function generateMarkdown(userResponses, userInfo) {
   // Optional Tests section
   if (userResponses.tests !== '') {
   
-  makeMarkdown +=
+  draftMarkdown +=
   `
   
   ## Tests
@@ -104,7 +91,7 @@ function generateMarkdown(userResponses, userInfo) {
 
 
   // License section is required
-  makeMarkdown +=
+  draftMarkdown +=
   `
   
   ## License
@@ -114,30 +101,30 @@ function generateMarkdown(userResponses, userInfo) {
 
 
   // Questions / About Developer section
-  let makeDev = 
+  let draftDev = 
   `
   ---
   
-  ## Questions? 
-  
+  ## Questions?
+    
   For any questions, please contact me with the information below:
  
-  GitHub: [@${userInfo.login}](${userInfo.url})
+  GitHub: [@${userInfo.login}](${userInfo.url}) // not working, need to just link to regular site, same with email
   `;
 
   // If GitHub email is not null, add to Developer section
   if (userInfo.email !== null) {
   
-  makeDev +=
+  draftDev +=
   `
   Email: ${userInfo.email}
   `};
 
   // Add developer section to markdown
-  makeMarkdown += makeDev;
+  draftMarkdown += draftDev;
 
   // Return markdown
-  return makeMarkdown;
+  return draftMarkdown;
   
 }
 

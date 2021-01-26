@@ -1,7 +1,7 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
-const generateMarkdown = require('./utils/generateMarkdown');
+const generateMarkdown = require('./utils/generateMarkdown.js');
 const api = require('./utils/API.js');
 const util = require('util');
 
@@ -28,7 +28,7 @@ const questions = [
         message: 'Enter your project instructions and examples.'
     },
     {
-        type: 'input',
+        type: 'list',
         name: 'license',
         message: 'What license will be used for your project?',
         choices: ['Apache-2.0', 'BSD-3-Clause', 'GPL-3.0', 'ISC', 'MIT']
