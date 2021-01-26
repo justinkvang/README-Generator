@@ -42,20 +42,25 @@ const questions = [
     {
         type: 'input',
         name: 'GitHub username',
-        message: 'Enter your GitHub username.'
-    },
-    {
-        type: 'input',
-        name: 'Test',
-        message: 'Provide tests for your project and explain how to to test it (if necessary).',
+        message: 'Enter your GitHub username.',
         validate: function (answer) {
             if (answer.length < 1) {
-                return console.log("You must enter a GitHub username.");
+                return console.log("You must enter a valid GitHub username.");
             }
             return true;
         }
     },
-    
+    {
+        type: 'input',
+        name: 'Repository',
+        message: 'Enter the name of your repository on GitHub.',
+        validate: function (answer) {
+            if (answer.length < 1) {
+                return console.log("You must enter the valid name of your GitHub repository.");
+            }
+            return true;
+        } 
+    },
 ];
 
 // TODO: Create a function to write README file
