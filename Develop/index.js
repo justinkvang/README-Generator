@@ -1,6 +1,10 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
+const generateMarkdown = require('./utils/generateMarkdown');
+const api = require('./utils/API.js');
+const util = require('util');
+const { userInfo } = require('os');
 // TODO: Create an array of questions for user input
 const questions = [
     {
@@ -64,10 +68,37 @@ const questions = [
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, err =>{
+        if (err) {
+            return console.log(err);
+        }
+        console.log('Your README file has been created!');
+    })
+}
+
+const writeFileAsync = util.promisify(writeToFile);
 
 // TODO: Create a function to initialize app
-function init() {}
+async function init() {
+    try {
+        const userResponses = await inquirer.prompt(questions);
+        console.log("Your responses: ", userResponses);
+        console.log("Your responses have been logged! Grabbing GitHub data now...");
+
+        const userInfo = await api.getUser(userResponses);
+        console.log("Your GitHub user info: ", userInfo);
+
+        console.log("Generating your README file...");
+        const markdown = generateMarkdown(userResponses, userInfo);
+        console.log(markdown);
+
+        await writeFileAsync('README.md', markdown);
+
+    }   catch (error) {
+        console.log(error);
+    }
+};
 
 // Function call to initialize app
 init();
