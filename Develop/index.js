@@ -4,48 +4,48 @@ const fs = require('fs');
 const generateMarkdown = require('./utils/generateMarkdown');
 const api = require('./utils/API.js');
 const util = require('util');
-const { userInfo } = require('os');
+
 // TODO: Create an array of questions for user input
 const questions = [
     {
         type: 'input',
-        name: 'Title',
+        name: 'title',
         message: 'Enter is the title of your project?'
     },
     {
         type: 'input',
-        name: 'Description',
+        name: 'description',
         message: 'Enter a description of your project.'
     },
     {
         type: 'input',
-        name: 'Installation',
+        name: 'installation',
         message: 'Explain how the user would install your project (if necessary).'
     },
     {
         type: 'input',
-        name: 'Usage',
+        name: 'usage',
         message: 'Enter your project instructions and examples.'
     },
     {
         type: 'input',
-        name: 'License',
+        name: 'license',
         message: 'What license will be used for your project?',
         choices: ['Apache-2.0', 'BSD-3-Clause', 'GPL-3.0', 'ISC', 'MIT']
     },
     {
         type: 'input',
-        name: 'Contributing',
+        name: 'contributing',
         message: 'Explain how users can contribute to your project (if necessary).'
     },
     {
         type: 'input',
-        name: 'Test',
+        name: 'test',
         message: 'Provide tests for your project and explain how to to test it (if necessary).'
     },
     {
         type: 'input',
-        name: 'GitHub username',
+        name: 'gitHub username',
         message: 'Enter your GitHub username.',
         validate: function (answer) {
             if (answer.length < 1) {
@@ -56,7 +56,7 @@ const questions = [
     },
     {
         type: 'input',
-        name: 'Repository',
+        name: 'repository',
         message: 'Enter the name of your repository on GitHub.',
         validate: function (answer) {
             if (answer.length < 1) {
