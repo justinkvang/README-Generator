@@ -23,7 +23,7 @@
 
   The application then takes your response and will generate markdowns for the README file. The README will also include a badge for your license. 
 
-  Once this is done, the `fs.writeFile` is used to generate your README file!
+  Once this is done, the `fs.writeFile` is used to generate your `README.md` file!
 
   ## License
   [MIT License](https://choosealicense.com/licenses/mit/)
