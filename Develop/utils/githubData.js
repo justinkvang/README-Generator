@@ -1,10 +1,10 @@
 const axios = require('axios');
 
-const api = {
+const githubData = {
   async getUser(userResponses) {
     try { let response = await axios
         
-        .get(`https://api.github.com/users/${userResponses.username}`);
+        .get(`https://github.com/${userResponses.username}`);
         return response.data;
 
       } catch (error) {
@@ -13,4 +13,4 @@ const api = {
   }
 };
 
-module.exports = api;
+module.exports = githubData;
