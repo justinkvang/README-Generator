@@ -1,24 +1,34 @@
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
-function renderLicenseBadge(license) {}
+function renderLicenseBadge(license) {
+  if (license === null) {
+    return '';
+  }
+  return `![badge](https://img.shields.io/badge/license-${license}-blue)<br />`;
+}
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
-function renderLicenseLink(license) {}
-
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
-function renderLicenseSection(license) {}
+function renderLicenseLink(license) {
+  switch (license) {
+    case 'MIT':
+      return `[MIT License](https://choosealicense.com/licenses/mit/)`;
+    case 'Apache':
+      return  `[Apache License](https://www.apache.org/licenses/)`;
+    case null:
+      return '';
+  }
+}
 
 // TODO: Create a function to generate markdown for README
-function generateMarkdown(userResponse) {
+function generateMarkdown(data) {
   return `
-  <h1 align="center">${userResponse.title}</h1>
-
-  ![badge](https://img.shields.io/badge/license-${userResponse.license}-blue)<br />
+  <h1 align="center">${data.title}</h1>
+  
+  ${renderLicenseBadge(data.license)}
 
   ## Description
-  ${userResponse.description}
+  ${data.description}
 
   ## Table of Contents
   - [Description](#description)
@@ -30,25 +40,24 @@ function generateMarkdown(userResponse) {
   - [Questions](#questions)
 
   ## Installation
-  ${userResponse.installation}
+  ${data.installation}
 
   ## Usage
-  ${userResponse.usage}
+  ${data.usage}
 
   ## License
-  ${userResponse.license}
-  ![badge](https://img.shields.io/badge/license-${userResponse.license}-blue)
+  ${renderLicenseLink(data.license)}
 
   ## Contributing
-  ${userResponse.contributing}
+  ${data.contributing}
 
   ## Test
-  ${userResponse.test}
+  ${data.test}
 
   ## Questions
-  - My GitHub profile: [${userResponse.username}](http://github.com/${userResponse.username})
-  - My GitHub repository: [${userResponse.repo}](http://github.com/${userResponse.repo}?tab=repositories)
-  - Email me with any questions: ${userResponse.email}
+  - My GitHub profile: [${data.username}](http://github.com/${data.username})
+  - My GitHub repository: [${data.repo}](http://github.com/${data.repo}?tab=repositories)
+  - Email me with any questions: ${data.email}
 `;
 }
 
