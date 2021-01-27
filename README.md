@@ -19,6 +19,8 @@
   To generate your own README, first run `npm i` in order to install the npm package `inquirer` dependency. The application itself can be invoked with `node index.js`.
 
   ## Usage
+  ![Gif demo of README-generator](./Assets/demo.gif)
+  
   When you run `node index.js`, the application uses the `inquirer` package to prompt you in the command line with a series of questions about your project and GitHub information.
 
   The application then takes your response and will generate markdowns for the README file. The README will also include a badge for your license. 
