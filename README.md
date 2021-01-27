@@ -4,7 +4,7 @@
   ![badge](https://img.shields.io/badge/license-MIT-blue)<br />
 
   ## Description
-  Every good project needs a quality README with information about the appplication. Therefore I created a command-line application that generates a README file from a user's input using the Inquirer package. 
+  Every good project needs a quality README with information about the application. Therefore I created a command-line application that generates a README file from a user's input using the Inquirer package. 
 
   ## Table of Contents
   - [Description](#description)
@@ -19,11 +19,13 @@
   To generate your own README, first run `npm i` in order to install the npm package `inquirer` dependency. The application itself can be invoked with `node index.js`.
 
   ## Usage
+  ![Gif demo of README-generator](./Assets/demo.gif)
+  
   When you run `node index.js`, the application uses the `inquirer` package to prompt you in the command line with a series of questions about your project and GitHub information.
 
   The application then takes your response and will generate markdowns for the README file. The README will also include a badge for your license. 
 
-  Once this is done, the `fs.writeFile` is used to generate your README file!
+  Once this is done, the `fs.writeFile` is used to generate your `README.md` file!
 
   ## License
   [MIT License](https://choosealicense.com/licenses/mit/)
