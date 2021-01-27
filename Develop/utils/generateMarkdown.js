@@ -1,131 +1,64 @@
-function generateMarkdown(userResponses, userInfo) {
+// TODO: Create a function that returns a license badge based on which license is passed in
+// If there is no license, return an empty string
+function renderLicenseBadge(license) {
+  if (license === null) {
+    return '';
+  }
+  return `![badge](https://img.shields.io/badge/license-${license}-blue)<br />`;
+}
 
-  // Generate Table of Contents conditionally based on userResponses
-  let draftToC = `## Table of Contents`;
+// TODO: Create a function that returns the license link
+// If there is no license, return an empty string
+function renderLicenseLink(license) {
+  switch (license) {
+    case 'MIT':
+      return `[MIT License](https://choosealicense.com/licenses/mit/)`;
+    case 'Apache':
+      return  `[Apache License](https://www.apache.org/licenses/)`;
+    case null:
+      return '';
+  }
+}
 
-  if (userResponses.installation !== '') { draftToC += `
-  * [Installation](#installation)` };
-
-  if (userResponses.usage !== '') { draftToC += `
-  * [Usage](#usage)` };
-
-  if (userResponses.contributing !== '') { draftToC += `
-  * [Contributing](#contributing)` };
-
-  if (userResponses.tests !== '') { draftToC += `
-  * [Tests](#tests)` };
-
-
-  // Generate markdown for the top required portions of the README
-  let draftMarkdown = 
-  `# ${userResponses.title}  
+// TODO: Create a function to generate markdown for README
+function generateMarkdown(data) {
+  return `
+  <h1 align="center">${data.title}</h1>
   
-  ## Description 
-  
-  *The what, why, and how:* 
-  
-  ${userResponses.description}
-  `
+  ${renderLicenseBadge(data.license)}
 
-  // Add Table of Contents to markdown
-  draftMarkdown += draftToC;
- 
-  // Add License section since License is required to Table of Contents
-  draftMarkdown += `
-  * [License](#license)`;
-  
+  ## Description
+  ${data.description}
 
-  // Optional Installation section
-  if (userResponses.installation !== '') {
-  
-  draftMarkdown +=
-  `
-  
+  ## Table of Contents
+  - [Description](#description)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [License](#license)
+  - [Contributing](#contributing)
+  - [Tests](#test)
+  - [Questions](#questions)
+
   ## Installation
-  
-  *Steps required to install project and how to get the development environment running:*
-  
-  ${userResponses.installation}`
-  };
-  
+  ${data.installation}
 
-  // Optional Usage section
-  if (userResponses.usage !== '') {
-  
-  draftMarkdown +=
-  
-  `
-  
-  ## Usage 
-  
-  *Instructions and examples for use:*
-  
-  ${userResponses.usage}`
-  };
-  
-  
-  // Optional Contributing section
-  if (userResponses.contributing !== '') {
-  `
-  
-  ## Contributing
-  
-  *If you would like to contribute it, you can follow these guidelines for how to do so.*
-  
-  ${userResponses.contributing}`
-  };
-  
+  ## Usage
+  ${data.usage}
 
-  // Optional Tests section
-  if (userResponses.tests !== '') {
-  
-  draftMarkdown +=
-  `
-  
-  ## Tests
-  
-  *Tests for application and how to run them:*
-  
-  ${userResponses.tests}`
-  };
-
-
-  // License section is required
-  draftMarkdown +=
-  `
-  
   ## License
-  
-  ${userResponses.license}
-  `;
+  ${renderLicenseLink(data.license)}
 
+  ## Contributing
+  ${data.contributing}
 
-  // Questions / About Developer section
-  let draftDev = 
-  `
-  ---
-  
-  ## Questions?
-    
-  For any questions, please contact me with the information below:
- 
-  GitHub: [@${userInfo.login}](${userInfo.url}) // not working, need to just link to regular site, same with email
-  `;
+  ## Test
+  ${data.test}
 
-  // If GitHub email is not null, add to Developer section
-  if (userInfo.email !== null) {
-  
-  draftDev +=
-  `
-  Email: ${userInfo.email}
-  `};
-
-  // Add developer section to markdown
-  draftMarkdown += draftDev;
-
-  // Return markdown
-  return draftMarkdown;
-  
+  ## Questions
+  - My GitHub profile: [${data.username}](http://github.com/${data.username})
+  - My GitHub repository: [${data.repo}](http://github.com/${data.repo}?tab=repositories)
+  - Email me with any questions: ${data.email}
+`;
 }
 
 module.exports = generateMarkdown;
