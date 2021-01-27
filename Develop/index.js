@@ -12,7 +12,7 @@ const questions = [
     {type: 'input', name: 'usage', message: 'Enter your project instructions and examples.'},
     {type: 'input', name: 'contributing', message: 'How can user contribute to your project (if necessary)?'},
     {type: 'input', name: 'test', message: 'Provide tests for your project and explain how to to test it (if necessary).'},
-    {type: 'list', name: 'license', message: 'What license will be used for your project?', choices: ['Apache-2.0', 'BSD-3-Clause', 'GPL-3.0', 'ISC', 'MIT']},
+    {type: 'list', name: 'license', message: 'What license will be used for your project?', choices: ['Apache', 'BSD', 'GPL', 'ISC', 'MIT']},
     {type: 'input', name: 'username', message: 'What is your GitHub username?'},
     {type: 'input', name: 'repo', message: 'What is your GitHub repository?'},
     {type: 'input', name: 'email', message: 'What is your email?'},

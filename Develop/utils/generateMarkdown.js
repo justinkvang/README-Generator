@@ -46,7 +46,8 @@ function generateMarkdown(userResponse) {
   ${userResponse.test}
 
   ## Questions
-  - Find me on GitHub: [${userResponse.username}](http://github.com/${userResponse.username})
+  - My GitHub profile: [${userResponse.username}](http://github.com/${userResponse.username})
+  - My GitHub repository: [${userResponse.repo}](http://github.com/${userResponse.repo}?tab=repositories)
   - Email me with any questions: ${userResponse.email}
 `;
 }
