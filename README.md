@@ -4,7 +4,7 @@
   ![badge](https://img.shields.io/badge/license-MIT-blue)<br />
 
   ## Description
-  Every good project needs a quality README with information about the appplication. Therefore I created a command-line application that generates a README file from a user's input using the Inquirer package. 
+  Every good project needs a quality README with information about the application. Therefore I created a command-line application that generates a README file from a user's input using the Inquirer package. 
 
   ## Table of Contents
   - [Description](#description)
